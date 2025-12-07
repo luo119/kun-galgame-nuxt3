@@ -1,39 +1,59 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 import type { MessageStore } from '~/store/types/components/message'
 
-export const useComponentMessageStore = defineStore('tempComponentMessage', {
-  persist: false,
-  state: (): MessageStore => ({
-    showAlert: false,
-    alertTitle: '',
-    alertMsg: '',
-    isShowCancel: false,
+export const useComponentMessageStore = defineStore(
+  'tempComponentMessage',
+  () => {
+    const showAlert = ref<MessageStore['showAlert']>(false)
+    const alertTitle = ref<MessageStore['alertTitle']>('')
+    const alertMsg = ref<MessageStore['alertMsg']>('')
+    const isShowCancel = ref<MessageStore['isShowCancel']>(false)
+    const isShowCapture = ref<MessageStore['isShowCapture']>(false)
+    const isCaptureSuccessful = ref<MessageStore['isCaptureSuccessful']>(false)
+    const codeSalt = ref<MessageStore['codeSalt']>('')
 
-    isShowCapture: false,
-    isCaptureSuccessful: false,
+    const handleCloseHandler = ref<() => void>(() => {})
+    const handleConfirmHandler = ref<() => void>(() => {})
 
-    codeSalt: ''
-  }),
-  getters: {},
-  actions: {
-    alert(
-      alertTitle?: string,
-      alertMsg?: string,
-      isShowCancel?: boolean
-    ): Promise<boolean> {
+    const alert = (
+      title?: string,
+      message?: string,
+      showCancel?: boolean
+    ): Promise<boolean> => {
       return new Promise<boolean>((resolve) => {
-        this.showAlert = true
-        this.alertTitle = alertTitle
-        this.alertMsg = alertMsg
-        this.isShowCancel = isShowCancel
+        showAlert.value = true
+        alertTitle.value = title
+        alertMsg.value = message
+        isShowCancel.value = showCancel
 
-        this.handleClose = () => resolve(false)
-
-        this.handleConfirm = () => resolve(true)
+        handleCloseHandler.value = () => resolve(false)
+        handleConfirmHandler.value = () => resolve(true)
       })
-    },
+    }
 
-    handleClose() {},
-    handleConfirm() {}
+    const handleClose = () => {
+      handleCloseHandler.value()
+    }
+
+    const handleConfirm = () => {
+      handleConfirmHandler.value()
+    }
+
+    return {
+      showAlert,
+      alertTitle,
+      alertMsg,
+      isShowCancel,
+      isShowCapture,
+      isCaptureSuccessful,
+      codeSalt,
+      alert,
+      handleClose,
+      handleConfirm
+    }
+  },
+  {
+    persist: false
   }
-})
+)

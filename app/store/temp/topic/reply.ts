@@ -1,22 +1,23 @@
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
 import type {
   ReplyStoreTemp,
   SuccessfulReplyEvent
 } from '~/store/types/topic/reply'
 
-export const useTempReplyStore = defineStore('tempTopicReply', {
-  persist: false,
-  state: (): ReplyStoreTemp => ({
-    isEdit: false,
-    isScrollToTop: false,
-    scrollToReplyId: -1,
-    isReplyRewriting: false,
-    replyRewrite: null,
-    lastSuccessfulReply: null
-  }),
-  actions: {
-    setRewriteData(reply: TopicReply) {
-      this.isReplyRewriting = true
-      this.replyRewrite = {
+export const useTempReplyStore = defineStore(
+  'tempTopicReply',
+  () => {
+    const isEdit = ref<ReplyStoreTemp['isEdit']>(false)
+    const isScrollToTop = ref<ReplyStoreTemp['isScrollToTop']>(false)
+    const scrollToReplyId = ref<ReplyStoreTemp['scrollToReplyId']>(-1)
+    const isReplyRewriting = ref<ReplyStoreTemp['isReplyRewriting']>(false)
+    const replyRewrite = ref<ReplyStoreTemp['replyRewrite']>(null)
+    const lastSuccessfulReply = ref<ReplyStoreTemp['lastSuccessfulReply']>(null)
+
+    const setRewriteData = (reply: TopicReply) => {
+      isReplyRewriting.value = true
+      replyRewrite.value = {
         id: reply.id,
         mainContent: reply.contentMarkdown,
         targets: reply.targets.map((t) => ({
@@ -26,19 +27,35 @@ export const useTempReplyStore = defineStore('tempTopicReply', {
           content: t.replyContentMarkdown
         }))
       }
-    },
-
-    resetRewriteReplyData() {
-      this.replyRewrite = null
-      this.isReplyRewriting = false
-    },
-
-    setSuccessfulReply(event: SuccessfulReplyEvent) {
-      this.lastSuccessfulReply = event
-    },
-
-    clearSuccessfulReply() {
-      this.lastSuccessfulReply = null
     }
+
+    const resetRewriteReplyData = () => {
+      replyRewrite.value = null
+      isReplyRewriting.value = false
+    }
+
+    const setSuccessfulReply = (event: SuccessfulReplyEvent) => {
+      lastSuccessfulReply.value = event
+    }
+
+    const clearSuccessfulReply = () => {
+      lastSuccessfulReply.value = null
+    }
+
+    return {
+      isEdit,
+      isScrollToTop,
+      scrollToReplyId,
+      isReplyRewriting,
+      replyRewrite,
+      lastSuccessfulReply,
+      setRewriteData,
+      resetRewriteReplyData,
+      setSuccessfulReply,
+      clearSuccessfulReply
+    }
+  },
+  {
+    persist: false
   }
-})
+)

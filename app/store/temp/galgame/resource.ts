@@ -1,20 +1,23 @@
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
 import type { GalgameResourceStoreTemp } from '~/store/types/galgame/resource'
 
-interface Store {
-  resources: GalgameResourceStoreTemp[]
-  isShowPublish: boolean
-  rewriteResourceId: number
-  commentToUid: number
-}
+export const useTempGalgameResourceStore = defineStore(
+  'tempGalgameResource',
+  () => {
+    const resources = ref<GalgameResourceStoreTemp[]>([])
+    const isShowPublish = ref(false)
+    const rewriteResourceId = ref(0)
+    const commentToUid = ref(0)
 
-export const useTempGalgameResourceStore = defineStore('tempGalgameResource', {
-  persist: false,
-  state: (): Store => ({
-    resources: [],
-    isShowPublish: false,
-    rewriteResourceId: 0,
-
-    commentToUid: 0
-  }),
-  actions: {}
-})
+    return {
+      resources,
+      isShowPublish,
+      rewriteResourceId,
+      commentToUid
+    }
+  },
+  {
+    persist: false
+  }
+)

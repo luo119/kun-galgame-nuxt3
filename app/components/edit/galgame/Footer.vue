@@ -70,7 +70,7 @@ const handlePublishGalgame = async () => {
 
     useKunLoliInfo('发布 Galgame 成功', 5)
     await navigateTo(`/galgame/${gid}`)
-    usePersistEditGalgameStore().$reset()
+    usePersistEditGalgameStore().resetEditGalgameStore()
   }
 }
 </script>

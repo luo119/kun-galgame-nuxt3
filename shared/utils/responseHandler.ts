@@ -45,7 +45,7 @@ export const onResponse = async <R extends ResponseType>(
     const userStore = usePersistUserStore()
 
     if (!navigateCookie && userStore.id) {
-      userStore.$reset()
+      userStore.resetUser()
 
       useMessage(message || '登录已失效，请重新登录', 'error', 7777)
 

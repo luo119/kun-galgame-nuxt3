@@ -32,7 +32,7 @@ const logOut = async () => {
   if (res) {
     useMessage(10110, 'success')
     await navigateTo('/login')
-    usePersistUserStore().$reset()
+    usePersistUserStore().resetUser()
   }
 }
 </script>

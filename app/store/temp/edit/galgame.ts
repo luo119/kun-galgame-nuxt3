@@ -1,12 +1,15 @@
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
 import type { GalgameEditStoreTemp } from '~/store/types/edit/galgame'
 
-interface Store {
-  galgamePR: GalgameEditStoreTemp[]
-}
+export const useTempGalgamePRStore = defineStore(
+  'tempGalgamePR',
+  () => {
+    const galgamePR = ref<GalgameEditStoreTemp[]>([])
 
-export const useTempGalgamePRStore = defineStore('tempGalgamePR', {
-  persist: false,
-  state: (): Store => ({
-    galgamePR: []
-  })
-})
+    return { galgamePR }
+  },
+  {
+    persist: false
+  }
+)
