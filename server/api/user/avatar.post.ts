@@ -1,7 +1,7 @@
 import { prisma } from '~~/prisma/prisma'
 import env from '~~/server/env/dotenv'
 import sharp from 'sharp'
-import { uploadImageToS3 } from '~/lib/s3/uploadImageToS3'
+import { uploadImageToS3 } from '~~/lib/s3/uploadImageToS3'
 import {
   KUN_VISUAL_NOVEL_IMAGE_COMPRESS_QUALITY,
   KUN_VISUAL_NOVEL_IMAGE_COMPRESS_LIMIT

@@ -140,7 +140,6 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'system',
     fallback: 'light',
-    hid: 'nuxt-color-mode-script',
     globalName: '__KUNGALGAME_COLOR_MODE__',
     componentName: 'ColorScheme',
     classPrefix: 'kun-',

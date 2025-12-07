@@ -88,7 +88,7 @@ const options = computed(
     ],
     colors: colors.value,
     tooltip: {
-      theme: colorMode.value,
+      theme: colorMode.preference,
       shared: true,
       intersect: false,
       y: {

@@ -25,7 +25,7 @@ const modeItem: Mode[] = [
 ]
 
 watch(
-  () => colorMode.value,
+  () => colorMode.preference,
   () => {
     usePersistSettingsStore().setKUNGalgameTransparency(
       showKUNGalgamePageTransparency.value
