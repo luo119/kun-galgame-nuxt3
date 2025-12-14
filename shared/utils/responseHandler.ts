@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import { useMessage } from '../../app/composables/useMessage'
 import { usePersistUserStore } from '../../app/store/modules/user'
-import { navigateTo } from 'nuxt/app'
+import { navigateTo } from '#imports'
 import type { FetchResponse } from 'ofetch'
 
 interface KunErrorData {

@@ -1,4 +1,4 @@
-import { useState } from 'nuxt/app'
+import { useState } from '#imports'
 import { randomNum } from './random'
 import { kungal } from '../../app/config/kungal'
 
