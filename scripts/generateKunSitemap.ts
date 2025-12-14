@@ -3,8 +3,8 @@ import { glob } from 'tinyglobby'
 import prettier from 'prettier'
 import { getKunDynamicRoutes } from './dynamic-routes/getKunDynamicRoutes'
 import { getKunDynamicBlog } from './dynamic-routes/getKunDynamicBlog'
-import { kunCategoryAvailableItem } from '../constants/category'
-import { KUN_TOPIC_SECTION_DESCRIPTION_MAP } from '../constants/section'
+import { kunCategoryAvailableItem } from '../app/constants/category'
+import { KUN_TOPIC_SECTION_DESCRIPTION_MAP } from '../app/constants/section'
 
 const WEBSITE_URL = process.env.KUN_GALGAME_URL
 

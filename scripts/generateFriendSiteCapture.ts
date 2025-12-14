@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync } from 'node:fs'
 import { join } from 'pathe'
 import captureWebsite from 'capture-website'
-import { friendArray } from '~/config/friend'
+import { friendArray } from '../app/config/friend'
 
 export const generateFriendSiteCapture = async () => {
   const friendsDir = join(process.cwd(), 'public/friends')
