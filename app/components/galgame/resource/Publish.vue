@@ -16,19 +16,15 @@ import type {
 import type { GalgameResourceStoreTemp } from '~/store/types/galgame/resource'
 
 const props = defineProps<{
-  // For simplicity, the type is set to unknown here.
-  refresh: () => Promise<unknown>
+  galgameId: number
 }>()
 
 const emits = defineEmits<{
   close: []
+  refresh: []
 }>()
 
-const route = useRoute()
-const gid = computed(() => {
-  return parseInt((route.params as { gid: string }).gid)
-})
-const { resources, rewriteResourceId } = storeToRefs(
+const { resource, rewriteResourceId } = storeToRefs(
   useTempGalgameResourceStore()
 )
 const isFetching = ref(false)
@@ -54,11 +50,11 @@ const handlePublishResourceLink = async (method: 'POST' | 'PUT') => {
   }
 
   isFetching.value = true
-  const result = await $fetch(`/api/galgame/${gid.value}/resource`, {
+  const result = await $fetch(`/api/galgame/${props.galgameId}/resource`, {
     method,
     body: {
       ...resourceLink.value,
-      galgameId: gid.value,
+      galgameId: props.galgameId,
       galgameResourceId: rewriteResourceId.value
     },
     watch: false,
@@ -73,7 +69,6 @@ const handlePublishResourceLink = async (method: 'POST' | 'PUT') => {
       rewriteResourceId.value = 0
       useMessage(10550, 'success')
     }
-    await props.refresh()
     resourceLink.value = defaultResourceLink
     emits('close')
   }
@@ -82,21 +77,21 @@ const handlePublishResourceLink = async (method: 'POST' | 'PUT') => {
 const handleCancel = () => {
   rewriteResourceId.value = 0
   resourceLink.value = defaultResourceLink
-  resources.value[0] = resourceLink.value
+  resource.value = resourceLink.value
 }
 
 watch(
   () => rewriteResourceId.value,
   () => {
-    if (rewriteResourceId.value && resources.value[0]) {
-      resourceLink.value = resources.value[0]
+    if (rewriteResourceId.value && resource.value) {
+      resourceLink.value = resource.value
     }
   }
 )
 
 onMounted(() => {
-  if (rewriteResourceId.value && resources.value[0]) {
-    resourceLink.value = resources.value[0]
+  if (rewriteResourceId.value && resource.value) {
+    resourceLink.value = resource.value
   }
 })
 </script>

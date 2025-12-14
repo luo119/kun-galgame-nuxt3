@@ -1,5 +1,6 @@
 export interface GalgameResource {
   id: number
+  view: number
   galgameId: number
   user: KunUser
   type: string
@@ -12,14 +13,18 @@ export interface GalgameResource {
   isLiked: boolean
   linkDomain: string
   created: Date | string
+  edited: Date | string | null
 }
 
-export interface GalgameResourceDetails extends GalgameResource {
-  user: KunUser
+export interface GalgameResourceDetailPage extends GalgameResource {
+  note: string
+}
+
+export interface GalgameResourceDetailLink extends GalgameResource {
   link: string[]
   code: string
-  password: string
   note: string
+  password: string
 }
 
 export interface GalgameResourceCard extends GalgameResource {
@@ -42,6 +47,6 @@ export interface GalgameResourceSummary {
 
 export interface GalgameResourcePageData {
   galgame: GalgameResourceSummary
-  resource: GalgameResourceDetails
+  resource: GalgameResource
   recommendations: GalgameResourceCard[]
 }

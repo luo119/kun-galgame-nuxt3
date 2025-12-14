@@ -15,9 +15,6 @@ const props = defineProps<{
   refresh: () => void
 }>()
 
-const details = ref<GalgameResourceDetails>()
-const isModalOpen = ref(false)
-const { rewriteResourceId } = storeToRefs(useTempGalgameResourceStore())
 const isFetching = ref(false)
 const { id } = usePersistUserStore()
 const { providerName, resolveProviderName } = useGalgameResourceProvider()
@@ -46,14 +43,6 @@ const handleMarkValid = async (
     props.refresh()
   }
 }
-
-watch(
-  () => [rewriteResourceId.value, props.resource],
-  () => {
-    details.value = undefined
-    isModalOpen.value = false
-  }
-)
 
 onMounted(() => {
   resolveProviderName(props.resource.linkDomain)
@@ -120,9 +109,7 @@ onMounted(() => {
         <KunButton
           size="sm"
           variant="flat"
-          v-if="resource.id !== rewriteResourceId"
           :href="`/galgame-resource/${resource.id}`"
-          :loading="isFetching"
         >
           下载资源
         </KunButton>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const { id, role } = usePersistUserStore()
-const { resources, rewriteResourceId } = storeToRefs(
+const { resource, rewriteResourceId } = storeToRefs(
   useTempGalgameResourceStore()
 )
 const props = defineProps<{
-  details: GalgameResourceDetails
+  details: GalgameResourceDetailLink
   refresh: () => void
 }>()
 const isFetching = ref(false)
@@ -33,7 +33,7 @@ const handleDeleteResource = async (
   }
 }
 
-const handleReportExpire = async (details: GalgameResourceDetails) => {
+const handleReportExpire = async (details: GalgameResourceDetailLink) => {
   if (!id) {
     useMessage(10546, 'warn')
     return
@@ -65,8 +65,8 @@ const handleReportExpire = async (details: GalgameResourceDetails) => {
   }
 }
 
-const handleRewriteResource = (details: GalgameResourceDetails) => {
-  resources.value[0] = { ...details }
+const handleRewriteResource = (details: GalgameResourceDetailLink) => {
+  resource.value = { ...details }
   rewriteResourceId.value = details.id
 }
 </script>

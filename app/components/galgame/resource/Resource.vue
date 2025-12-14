@@ -4,9 +4,7 @@ const gid = computed(() => {
   return parseInt((route.params as { gid: string }).gid)
 })
 
-const { isShowPublish, rewriteResourceId } = storeToRefs(
-  useTempGalgameResourceStore()
-)
+const { isShowPublish } = storeToRefs(useTempGalgameResourceStore())
 const { id } = usePersistUserStore()
 
 const { data, status, refresh } = await useLazyFetch(
@@ -15,23 +13,6 @@ const { data, status, refresh } = await useLazyFetch(
     method: 'GET',
     query: { galgameId: gid.value },
     ...kungalgameResponseHandler
-  }
-)
-
-const handleClickContribute = () => {
-  if (!rewriteResourceId.value) {
-    isShowPublish.value = !isShowPublish.value
-  }
-}
-
-watch(
-  () => rewriteResourceId.value,
-  () => {
-    if (rewriteResourceId.value) {
-      isShowPublish.value = true
-    } else {
-      isShowPublish.value = false
-    }
   }
 )
 </script>
@@ -49,7 +30,9 @@ watch(
           >
             批量更改已失效资源链接
           </KunButton>
-          <KunButton @click="handleClickContribute">添加资源</KunButton>
+          <KunButton @click="isShowPublish = !isShowPublish">
+            添加资源
+          </KunButton>
         </div>
       </template>
 
@@ -127,6 +110,7 @@ watch(
       <GalgameResourcePublish
         :refresh="refresh"
         @close="isShowPublish = false"
+        :galgame-id="gid"
       />
     </KunModal>
 

@@ -70,8 +70,9 @@ export default defineEventHandler(async (event) => {
     ...new Set(data.link.map((l) => getDomain(l.url, { getRootDomain: true })))
   ]
 
-  const resource: GalgameResourceDetails = {
+  const resource: GalgameResourceDetailPage = {
     id: data.id,
+    view: data.view,
     galgameId: data.galgame_id,
     user: data.user,
     type: data.type,
@@ -80,13 +81,11 @@ export default defineEventHandler(async (event) => {
     size: data.size,
     status: data.status,
     download: data.download,
-    link: data.link.map((link) => link.url),
     linkDomain: linkDomain.length ? linkDomain[0]! : '',
-    code: data.code,
-    password: data.password,
     note: data.note,
     likeCount: data._count.like,
     isLiked: data.like.length > 0,
+    edited: data.edited,
     created: data.created
   }
 

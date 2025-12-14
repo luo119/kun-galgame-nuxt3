@@ -56,15 +56,22 @@ const platformLabels = computed(() => {
 
       <div class="flex w-full flex-col gap-3 md:col-span-2 lg:col-span-3">
         <div>
-          <h1 class="text-2xl font-bold">
-            {{ galgameName }}
+          <h2 class="text-2xl font-bold">
+            <KunLink
+              underline="none"
+              color="default"
+              :to="`/galgame/${props.galgame.id}`"
+              class-name="text-2xl hover:text-primary transition-colors"
+            >
+              {{ galgameName }}
+            </KunLink>
             <KunBadge
               class-name="ml-2 -translate-y-1"
               :color="galgame.contentLimit === 'all' ? 'success' : 'danger'"
             >
               {{ galgame.contentLimit === 'all' ? '全年龄' : 'R18' }}
             </KunBadge>
-          </h1>
+          </h2>
           <p class="text-default-500 mt-1 text-sm">
             {{
               `最近更新 ${formatTimeDifference(galgame.resourceUpdateTime)} · ${galgame.view.toLocaleString()} 次浏览`

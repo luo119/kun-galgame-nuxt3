@@ -36,15 +36,6 @@ export const kungalgameStoreReset = () => {
   const persistCategoryStore = usePersistCategoryStore()
   persistCategoryStore.category = 'galgame'
 
-  const persistHomeStore = usePersistKUNGalgameHomeStore()
-  resetReactiveState(persistHomeStore.fold, {
-    updates: true,
-    topics: true,
-    galgames: true,
-    resources: true,
-    sitemaps: true
-  })
-
   const { resetUser } = usePersistUserStore()
   resetUser()
 
@@ -68,11 +59,8 @@ export const kungalgameStoreReset = () => {
   const tempGalgamePRStore = useTempGalgamePRStore()
   tempGalgamePRStore.galgamePR = []
 
-  const tempGalgameResourceStore = useTempGalgameResourceStore()
-  tempGalgameResourceStore.resources = []
-  tempGalgameResourceStore.isShowPublish = false
-  tempGalgameResourceStore.rewriteResourceId = 0
-  tempGalgameResourceStore.commentToUid = 0
+  const { resetGalgameResource } = useTempGalgameResourceStore()
+  resetGalgameResource()
 
   const tempReplyStore = useTempReplyStore()
   tempReplyStore.isEdit = false
