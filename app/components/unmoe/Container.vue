@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
+
 const pageData = reactive({
   page: 1,
   limit: 30

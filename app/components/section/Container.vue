@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { KUN_TOPIC_CATEGORY, KUN_TOPIC_SECTION } from '~/constants/topic'
 import { KUN_TOPIC_SECTION_DESCRIPTION_MAP } from '~/constants/section'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = defineProps<{
   section: string
@@ -13,7 +14,7 @@ const categoryMap: Record<string, string> = {
   o: 'others'
 }
 const category = computed(
-  () => KUN_TOPIC_CATEGORY[categoryMap[props.section[0]]]
+  () => KUN_TOPIC_CATEGORY[categoryMap[props.section[0]!]!]!
 )
 
 const { data, status } = await useFetch(`/api/section`, {
@@ -51,7 +52,7 @@ watch(
         <div class="flex items-center gap-2">
           <KunLink
             underline="hover"
-            :to="`/category/${categoryMap[props.section[0]]}`"
+            :to="`/category/${categoryMap[props.section[0]!]}`"
             class-name="text-2xl font-medium"
           >
             {{ category }}

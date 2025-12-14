@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { kunReportOptions, KUN_REPORT_SECTION_MAP } from '~/constants/report'
 import { usePersistUserStore } from '~/store/modules/user'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const reason = ref('')
 const selectReportType = ref('topic')

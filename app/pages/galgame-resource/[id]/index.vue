@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import {
   KUN_GALGAME_RESOURCE_LANGUAGE_MAP,
   KUN_GALGAME_RESOURCE_PLATFORM_MAP,

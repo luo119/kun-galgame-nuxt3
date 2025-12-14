@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { watchDebounced } from '@vueuse/core'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import {
   type StatsModelType,
   KUN_ADMIN_OVERVIEW_STATS_MODEL_MAP

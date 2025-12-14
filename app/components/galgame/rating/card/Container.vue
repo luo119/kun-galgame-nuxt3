@@ -5,6 +5,7 @@ import {
   typeOptions,
   sortFieldOptions
 } from './_sort'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const params = reactive({
   page: 1,

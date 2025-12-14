@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
+
 useKunDisableSeo('网站设置')
 
 const { data } = await useFetch('/api/admin/setting/register', {

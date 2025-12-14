@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { KUN_USER_STATUS_MAP } from '~/constants/user'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = defineProps<{
   user: AdminUser

@@ -1,4 +1,5 @@
 import { Decoration } from '@milkdown/prose/view'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { Uploader } from '@milkdown/plugin-upload'
 import type { Node } from '@milkdown/prose/model'
 

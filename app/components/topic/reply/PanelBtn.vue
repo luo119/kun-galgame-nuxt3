@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { createReplySchema, updateReplySchema } from '~/validations/topic'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const route = useRoute()
 const topicId = computed(() => {

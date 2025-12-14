@@ -1,3 +1,4 @@
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { PollFormData } from '~/components/topic/poll/types'
 
 export const usePoll = (topicId: number) => {

@@ -6,6 +6,7 @@ import {
   KUN_GALGAME_TOOLSET_VERSION_MAP
 } from '~/constants/toolset'
 import { toolsetUpdateForm } from './rewriteStore'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = defineProps<{
   id: number

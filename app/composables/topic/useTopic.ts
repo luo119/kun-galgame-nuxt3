@@ -1,4 +1,5 @@
 import { pageData } from '~/components/topic/pageData'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 export const useTopic = (topicType: 'resource' | 'all') => {
   const topics = useState<TopicCard[]>(topicType, () => [])

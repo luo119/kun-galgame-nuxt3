@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { topicSortItem } from '~/constants/ranking'
 import { topicRankingPageData, getRankClasses } from './pageData'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const { data } = await useFetch(`/api/ranking/topic`, {
   method: 'GET',

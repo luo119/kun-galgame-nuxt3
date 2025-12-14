@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import { KUN_TOPIC_SECTION } from '~/constants/topic'
 import type {
   DiscussionForumPosting,

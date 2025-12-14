@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { UpdateWebsiteCategoryPayload } from '~/components/website/modal/types'
 
 const route = useRoute()

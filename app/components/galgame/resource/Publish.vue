@@ -8,6 +8,7 @@ import {
   KUN_GALGAME_RESOURCE_PLATFORM_MAP
 } from '~/constants/galgame'
 import { checkGalgameResourcePublish } from '../utils/checkGalgameResourcePublish'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type {
   KunGalgameResourceTypeOptions,
   KunGalgameResourceLanguageOptions,

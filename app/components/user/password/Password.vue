@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { checkChangePassword } from '../utils/check'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const input = reactive({
   oldPassword: '',

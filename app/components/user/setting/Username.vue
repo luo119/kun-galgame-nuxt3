@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
+
 const message = useComponentMessageStore()
 
 const inputValue = ref('')

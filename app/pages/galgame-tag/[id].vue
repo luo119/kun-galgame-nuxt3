@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { UpdateGalgameTagPayload } from '~/components/galgame/types'
 import {
   KUN_GALGAME_TAG_CATEGORY_MAP,

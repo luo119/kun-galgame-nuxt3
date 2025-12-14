@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import {
   MAX_SMALL_FILE_SIZE,
   MAX_LARGE_FILE_SIZE,
@@ -96,11 +97,11 @@ const onDrop = (e: DragEvent) => {
   isDragging.value = false
   const dt = e.dataTransfer
   if (dt?.files && dt.files.length > 0) {
-    const res = checkFileValid(dt.files[0])
+    const res = checkFileValid(dt.files[0]!)
     if (!res) {
       return
     }
-    selectedFile.value = dt.files[0]
+    selectedFile.value = dt.files[0]!
   }
 }
 const onDragOver = (e: DragEvent) => {
@@ -220,7 +221,7 @@ const uploadLarge = async (f: File) => {
 
     uploadStatus.value = 'largeUploading'
     for (let i = 0; i < urls.length; i++) {
-      const { partNumber, url } = urls[i]
+      const { partNumber, url } = urls[i]!
       const start = (partNumber - 1) * partSize
       const end = Math.min(start + partSize, f.size)
       const blob = f.slice(start, end)

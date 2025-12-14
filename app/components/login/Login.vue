@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onKeyStroke } from '@vueuse/core'
 import { checkLogin } from './checkLogin'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const { isShowCapture, isCaptureSuccessful } = storeToRefs(
   useComponentMessageStore()

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { createGalgameSchema } from '~/validations/galgame'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const { vndbId, name, contentLimit, introduction, aliases } = storeToRefs(
   usePersistEditGalgameStore()

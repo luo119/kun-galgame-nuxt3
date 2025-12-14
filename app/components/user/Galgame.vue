@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import {
   kunUserGalgameNavItem,
   type KUN_USER_PAGE_GALGAME_TYPE

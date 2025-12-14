@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { languageItems } from '~/constants/edit'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { VNDB, VNDBResponse } from '../utils/VNDB'
 
 const introductionLanguage = ref<Language>('zh-cn')

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getMessageI18n } from '../utils/getMessageI18n'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = defineProps<{
   message: Message

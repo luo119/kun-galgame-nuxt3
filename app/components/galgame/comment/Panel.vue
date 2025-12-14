@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
+
 const props = defineProps<{
   refresh: () => void
 }>()

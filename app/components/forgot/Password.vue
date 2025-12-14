@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { checkEmail, checkCode, checkPassword } from './check'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const { isShowCapture, isCaptureSuccessful, codeSalt } = storeToRefs(
   useComponentMessageStore()

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { checkGalgameLinkPublish } from '../utils/checkGalgameLinkPublish'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const { id } = usePersistUserStore()
 const route = useRoute()

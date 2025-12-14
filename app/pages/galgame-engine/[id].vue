@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { UpdateGalgameEnginePayload } from '~/components/galgame/types'
 
 const { role } = usePersistUserStore()

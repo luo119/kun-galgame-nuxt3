@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePersistKUNGalgameAdvancedFilterStore } from '~/store/modules/galgame'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const pageData = storeToRefs(useTempGalgameStore())
 const { includeProviders, excludeOnlyProviders } = storeToRefs(

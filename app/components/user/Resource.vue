@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import {
   GALGAME_RESOURCE_PROVIDER_MAP,
   GALGAME_RESOURCE_TYPE_ICON_MAP,

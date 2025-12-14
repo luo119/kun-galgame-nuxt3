@@ -10,6 +10,7 @@ import {
   KUN_GALGAME_CONTENT_LIMIT_MAP
 } from '~/constants/galgame'
 import { updateGalgameBannerSchema } from '~/validations/galgame'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = defineProps<{
   galgame: GalgameDetail

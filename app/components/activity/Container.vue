@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { KUN_ACTIVITY_TYPE_TYPE } from '~/constants/activity'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const activityPageTabs = Object.entries(KUN_ACTIVITY_TYPE_TYPE).map(
   ([key, value]) => ({

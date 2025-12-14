@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { watchDebounced } from '@vueuse/core'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const pageData = reactive({
   page: 1,

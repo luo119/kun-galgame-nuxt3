@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
+
 const { id, name, moemoepoint, isCheckIn } = storeToRefs(usePersistUserStore())
 const { messageStatus } = storeToRefs(useTempSettingStore())
 

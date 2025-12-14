@@ -3,6 +3,7 @@ import {
   KUN_GALGAME_RESOURCE_PULL_REQUEST_ACTION_MAP,
   KUN_GALGAME_RESOURCE_PULL_REQUEST_TYPE_MAP
 } from '~/constants/galgame'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const route = useRoute()
 const gid = computed(() => {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { asideItems } from './asideItemStore'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const routeName = computed(() => useRoute().name)
 

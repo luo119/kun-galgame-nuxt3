@@ -1,3 +1,4 @@
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { Ref } from 'vue'
 
 export const useTopicReplies = (topicId: number | Ref<number>) => {

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
+
 const pageData = storeToRefs(useTempToolsetStore())
 
 const { data, status } = await useFetch(`/api/toolset`, {

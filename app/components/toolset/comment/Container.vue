@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { SerializeObject } from 'nitropack'
 
 const props = defineProps<{ toolsetId: number; ownerId?: number }>()

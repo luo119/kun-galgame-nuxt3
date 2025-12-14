@@ -9,6 +9,7 @@ import {
   KUN_GALGAME_RESOURCE_PLATFORM_MAP
 } from '~/constants/galgame'
 import { useGalgameResourceProvider } from '~/composables/galgame/useGalgameResourceProvider'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = defineProps<{
   resource: GalgameResource

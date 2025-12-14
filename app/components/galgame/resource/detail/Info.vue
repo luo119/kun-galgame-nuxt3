@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useGalgameResourceProvider } from '~/composables/galgame/useGalgameResourceProvider'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const { id, role } = usePersistUserStore()
 const {

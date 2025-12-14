@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import { KUN_WEBSITE_CATEGORY_MAP } from '~/constants/galgameWebsite'
 import type {
   Article,

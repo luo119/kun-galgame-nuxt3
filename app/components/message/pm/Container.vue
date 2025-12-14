@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { replaceAsideItem } from '../aside/asideItemStore'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = defineProps<{
   userId: number

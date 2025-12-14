@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { KUN_UPDATE_LOG_TYPE_MAP } from '~/constants/update'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { UpdateUpdateLogPayload } from './types'
 
 const pageData = ref({

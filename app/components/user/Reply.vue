@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import {
   kunUserReplyNavItem,
   type KUN_USER_PAGE_REPLY_TYPE

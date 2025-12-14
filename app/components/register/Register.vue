@@ -3,6 +3,7 @@ import { onKeyStroke } from '@vueuse/core'
 import { KUN_REGISTER_FORM_FIELD_MAP } from '~/constants/auth'
 import { registerFormItem } from './registerFormItem'
 import { checkForm, checkRegister } from './checkRegister'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const { isShowCapture, isCaptureSuccessful, codeSalt } = storeToRefs(
   useComponentMessageStore()

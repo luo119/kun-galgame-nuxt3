@@ -3,6 +3,7 @@ import { callCommand } from '@milkdown/kit/utils'
 import { insertImageCommand } from '@milkdown/kit/preset/commonmark'
 import { commands } from './_buttonList'
 import { tabs, activeTab } from '../../atom'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { UseEditorReturn } from '@milkdown/vue'
 import type { CmdKey } from '@milkdown/kit/core'
 

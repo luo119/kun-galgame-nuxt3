@@ -1,5 +1,6 @@
 import { createTopicSchema } from '~/validations/topic'
 import { useTopicEditorStore } from './useTopicEditorStore'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import {
   TOPIC_SECTION_CONSUME_MOEMOEPOINTS,
   MOEMOEPOINT_COST_FOR_CONSUME_SECTION

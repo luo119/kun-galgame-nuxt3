@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { KUN_TOPIC_CATEGORY } from '~/constants/topic'
 import { KUN_CATEGORY_DESCRIPTION_MAP } from '~/constants/category'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const route = useRoute()
 

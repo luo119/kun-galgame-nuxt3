@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { updateToolsetResourceSchema } from '~/validations/toolset'
 import { KUN_GALGAME_TOOLSET_STORAGE_MAP } from '~/constants/toolset'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = defineProps<{
   toolsetId: number

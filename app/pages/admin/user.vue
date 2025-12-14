@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { watchDebounced } from '@vueuse/core'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 useKunDisableSeo('用户管理')
 

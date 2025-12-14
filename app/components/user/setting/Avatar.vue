@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
+
 const uploadedImage = ref<Blob>()
 const isUploading = ref(false)
 const { avatar, avatarMin } = storeToRefs(usePersistUserStore())

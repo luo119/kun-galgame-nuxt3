@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { updateGalgameSchema } from '~/validations/galgame'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const { galgamePR } = storeToRefs(useTempGalgamePRStore())
 

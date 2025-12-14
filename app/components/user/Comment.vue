@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import {
   kunUserCommentNavItem,
   type KUN_USER_PAGE_COMMENT_TYPE

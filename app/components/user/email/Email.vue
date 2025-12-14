@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { checkSendCode, checkResetEmail } from '../utils/check'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const hasSentCodeEmail = ref('')
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { scrollIntoComment } from './_scrollIntoComment'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = defineProps<{
   websiteId: number

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 import type { UpdateGalgameSeriesPayload } from '../types'
 
 const props = defineProps<{

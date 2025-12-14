@@ -15,6 +15,7 @@ import {
   updateGalgameRatingSchema
 } from '~/validations/galgame-rating'
 import { usePersistEditGalgameRatingStore } from '~/store/modules/edit/rating'
+import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 type RatingInitialData = {
   galgameRatingId: number
