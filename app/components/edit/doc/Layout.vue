@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { provideDocEditorContext } from './context'
 import type { DocEditorMode, DocEditorForm } from './type'
-import { computeReadingMinute, formatDatetimeLocalInput } from '~/utils/doc'
+import { computeReadingMinute } from '~/utils/doc'
 import { kungalgameResponseHandler } from '~/utils/responseHandler'
 
 const props = withDefaults(
@@ -21,29 +21,41 @@ const { data: categoryResponse } = await useFetch<DocCategoryListResponse>(
   {
     query: {
       page: 1,
-      limit: 200,
+      limit: 100,
       keyword: ''
     },
     ...kungalgameResponseHandler
   }
 )
 
-const { data: tagResponse } = await useFetch<DocTagListResponse>(
-  '/api/doc/tag',
-  {
+const { data: tagResponse, refresh: refreshTagResponse } =
+  await useFetch<DocTagListResponse>('/api/doc/tag', {
     query: {
       page: 1,
-      limit: 500,
+      limit: 100,
       keyword: ''
     },
     ...kungalgameResponseHandler
-  }
+  })
+
+const categories = ref<DocCategoryItem[]>([])
+const tags = ref<DocTagItem[]>([])
+
+watch(
+  categoryResponse,
+  (response) => {
+    categories.value = response?.categories ?? []
+  },
+  { immediate: true }
 )
 
-const categories = computed(
-  () => categoryResponse.value?.categories ?? []
+watch(
+  tagResponse,
+  (response) => {
+    tags.value = response?.tags ?? []
+  },
+  { immediate: true }
 )
-const tags = computed(() => tagResponse.value?.tags ?? [])
 
 const createDefaultForm = (): DocEditorForm => ({
   articleId: null,
@@ -56,9 +68,8 @@ const createDefaultForm = (): DocEditorForm => ({
   isPin: false,
   readingMinute: 0,
   contentMarkdown: '',
-  categoryId: null,
-  tagIds: [],
-  publishedTime: formatDatetimeLocalInput(new Date())
+  categoryId: 0,
+  tagIds: []
 })
 
 const form = reactive<DocEditorForm>(createDefaultForm())
@@ -78,7 +89,6 @@ const applyArticleToForm = (article: DocArticleDetail) => {
   form.contentMarkdown = article.contentMarkdown
   form.categoryId = article.category.id
   form.tagIds = article.tags.map((tag) => tag.id)
-  form.publishedTime = formatDatetimeLocalInput(article.publishedTime)
 }
 
 const resetForm = () => {
@@ -132,9 +142,7 @@ watch(
 watch(
   () => form.contentMarkdown,
   (markdown) => {
-    form.readingMinute = markdown.trim()
-      ? computeReadingMinute(markdown)
-      : 0
+    form.readingMinute = markdown.trim() ? computeReadingMinute(markdown) : 0
   },
   { immediate: true }
 )
@@ -179,10 +187,6 @@ const handleSubmit = async () => {
 
   isSubmitting.value = true
   try {
-    const publishedTime = form.publishedTime
-      ? new Date(form.publishedTime)
-      : null
-
     const body: Record<string, unknown> = {
       title: form.title.trim(),
       slug: form.slug.trim(),
@@ -194,11 +198,7 @@ const handleSubmit = async () => {
       readingMinute: form.readingMinute,
       contentMarkdown: form.contentMarkdown,
       categoryId: form.categoryId,
-      tagIds: Array.from(new Set(form.tagIds)),
-      publishedTime:
-        publishedTime && !Number.isNaN(publishedTime.getTime())
-          ? publishedTime.toISOString()
-          : undefined
+      tagIds: Array.from(new Set(form.tagIds))
     }
 
     if (isRewriteMode.value) {
@@ -231,6 +231,10 @@ const markPathCustomized = () => {
   }
 }
 
+const refreshTags = async () => {
+  await refreshTagResponse()
+}
+
 provideDocEditorContext({
   form,
   categories,
@@ -239,7 +243,8 @@ provideDocEditorContext({
   isSubmitting,
   handleSubmit,
   resetForm,
-  markPathCustomized
+  markPathCustomized,
+  refreshTags
 })
 </script>
 

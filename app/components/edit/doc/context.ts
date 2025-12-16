@@ -1,16 +1,17 @@
 import { inject, provide } from 'vue'
-import type { ComputedRef, Ref } from 'vue'
+import type { Ref } from 'vue'
 import type { DocEditorForm, DocEditorMode } from './type'
 
 export interface DocEditorContext {
   form: DocEditorForm
-  categories: ComputedRef<DocCategoryItem[]>
-  tags: ComputedRef<DocTagItem[]>
+  categories: Ref<DocCategoryItem[]>
+  tags: Ref<DocTagItem[]>
   mode: DocEditorMode
   isSubmitting: Ref<boolean>
   handleSubmit: () => Promise<void>
   resetForm: () => void
   markPathCustomized: () => void
+  refreshTags: () => Promise<void>
 }
 
 const docEditorContextKey = Symbol('DocEditorContext')

@@ -11,7 +11,6 @@ export interface DocEditorForm {
   isPin: boolean
   readingMinute: number
   contentMarkdown: string
-  categoryId: number | null
+  categoryId: number
   tagIds: number[]
-  publishedTime: string
 }

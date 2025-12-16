@@ -9,7 +9,7 @@ const primaryLabel = computed(() =>
 </script>
 
 <template>
-  <div class="space-y-3 rounded-xl border border-default-200 p-4">
+  <div class="border-default-200 space-y-3 rounded-xl border p-4">
     <div class="space-y-2">
       <h4 class="text-base font-semibold">提交操作</h4>
       <p class="text-default-500 text-sm">
