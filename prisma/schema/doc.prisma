@@ -39,12 +39,7 @@ model doc_article {
     published_time DateTime  @default(now())
     edited_time    DateTime?
 
-    content_markdown String  @db.Text
-    content_html     String? @db.Text
-    content_ast      Json?
-    toc              Json?
-    seo              Json?
-    navigation       Json?
+    content_markdown String @db.VarChar(100007)
 
     category_id Int
     category    doc_category @relation(fields: [category_id], references: [id], onDelete: Cascade)
