@@ -2,7 +2,7 @@
 import type { Toc, TocLink } from '@nuxt/content'
 
 const props = defineProps<{
-  toc: Toc
+  toc?: Toc | null
 }>()
 
 const activeId = ref<string | null>(null)
@@ -64,7 +64,7 @@ onUnmounted(() => {
 
 <template>
   <aside class="hidden w-64 shrink-0 space-y-8 lg:block">
-    <h3 class="p-3 text-xl font-semibold">页面目录</h3>
+    <h3 class="p-3 text-xl font-semibold">文档目录</h3>
     <nav
       class="scrollbar-hide max-h-[calc(100dvh-12rem)] overflow-y-auto"
       v-if="toc?.links"
@@ -75,6 +75,6 @@ onUnmounted(() => {
         @scroll-to="scrollToHeading"
       />
     </nav>
-    <KunNull v-if="!toc" description="本页面无目录" />
+    <KunNull v-else description="暂未生成目录" />
   </aside>
 </template>

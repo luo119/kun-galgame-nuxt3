@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import type { KunFrontmatter } from '../type'
-
 defineProps<{
-  metadata: KunFrontmatter
+  metadata: DocArticleDetail
 }>()
 </script>
 
@@ -12,7 +10,7 @@ defineProps<{
       <KunImage
         :alt="metadata.title"
         class="object-cover"
-        :src="metadata.banner"
+        :src="metadata.banner || '/kungalgame.webp'"
         width="100%"
         height="100%"
         data-kun-lazy-image
@@ -24,18 +22,27 @@ defineProps<{
         {{ metadata.title }}
       </h1>
 
+      <div class="flex flex-wrap items-center gap-3 text-sm">
+        <KunBadge color="secondary">
+          {{ metadata.category.title }}
+        </KunBadge>
+        <span class="text-default-500">
+          阅读 {{ metadata.view }} · 预计 {{ metadata.readingMinute }} 分钟
+        </span>
+      </div>
+
       <div class="flex items-center gap-3">
         <KunAvatar
           size="xl"
           :user="{
-            id: metadata.authorUid,
-            name: metadata.authorName,
-            avatar: metadata.authorAvatar
+            id: metadata.author.id,
+            name: metadata.author.name,
+            avatar: metadata.author.avatar
           }"
         />
         <div class="flex flex-col gap-1">
           <h2 class="text-small leading-none font-semibold">
-            {{ metadata.authorName }}
+            {{ metadata.author.name }}
           </h2>
           <div class="text-default-500 flex items-center gap-2">
             <KunIcon name="lucide:calendar-days" />

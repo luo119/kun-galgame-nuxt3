@@ -1,13 +1,37 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { data: posts } = await useAsyncData(() => {
-  return queryCollectionItemSurroundings('content', route.path, {
-    fields: ['title', 'path']
-  })
+const { data: articleResponse } = await useFetch('/api/doc/article', {
+  query: {
+    page: 1,
+    limit: 200,
+    orderBy: 'published_time',
+    sortOrder: 'desc'
+  }
 })
 
-const [prev, next] = posts.value || []
+const articles = computed(() => articleResponse.value?.articles || [])
+
+const currentIndex = computed(() => {
+  return articles.value.findIndex((article) => article.path === route.path)
+})
+
+const prev = computed(() => {
+  if (currentIndex.value > 0) {
+    return articles.value[currentIndex.value - 1]
+  }
+  return null
+})
+
+const next = computed(() => {
+  if (
+    currentIndex.value !== -1 &&
+    currentIndex.value < articles.value.length - 1
+  ) {
+    return articles.value[currentIndex.value + 1]
+  }
+  return null
+})
 </script>
 
 <template>
