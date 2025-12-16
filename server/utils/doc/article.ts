@@ -1,3 +1,5 @@
+import { markdownToHtml } from '../remark/markdownToHtml'
+import { generateMarkdownToc } from './toc'
 import type { Prisma } from '~~/prisma/generated/prisma/client'
 
 export const docArticleListSelect = {
@@ -85,5 +87,6 @@ export const mapDocArticleDetail = async (
 ): Promise<DocArticleDetail> => ({
   ...mapDocArticleListItem(article),
   contentMarkdown: article.content_markdown,
-  contentHtml: await markdownToHtml(article.content_markdown)
+  contentHtml: await markdownToHtml(article.content_markdown),
+  toc: generateMarkdownToc(article.content_markdown)
 })

@@ -26,9 +26,7 @@ defineProps<{
         <KunBadge color="secondary">
           {{ metadata.category.title }}
         </KunBadge>
-        <span class="text-default-500">
-          阅读 {{ metadata.view }} · 预计 {{ metadata.readingMinute }} 分钟
-        </span>
+        <span class="text-default-500"> 浏览量 {{ metadata.view }} </span>
       </div>
 
       <div class="flex items-center gap-3">

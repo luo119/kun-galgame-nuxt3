@@ -89,14 +89,8 @@ const toggleCategory = (categoryId: number) => {
               {{ article.title }}
             </span>
           </KunButton>
-
-          <KunNull
-            v-if="!articlesByCategory[category.id]?.length"
-            description="暂无文档"
-          />
         </div>
       </div>
-      <KunNull v-if="!categories.length" description="暂无文档分类" />
     </div>
   </div>
 </template>

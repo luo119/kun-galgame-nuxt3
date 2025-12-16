@@ -1,13 +1,6 @@
 <script setup lang="ts">
-import type { TocLink } from '@nuxt/content'
-
 defineProps<{
-  links: TocLink[]
-  activeId: string | null
-}>()
-
-defineEmits<{
-  'scroll-to': [id: string]
+  links: DocTocLink[]
 }>()
 
 const getPaddingClass = (depth: number) => {
@@ -31,31 +24,19 @@ const getPaddingClass = (depth: number) => {
 <template>
   <div class="flex flex-col space-y-2">
     <div class="flex max-w-56 flex-col" v-for="link in links" :key="link.id">
-      <a
-        :href="`#${link.id}`"
-        @click="
-          (e) => {
-            e.preventDefault()
-            $emit('scroll-to', link.id)
-          }
-        "
+      <div
         :class="
           cn(
             'flex py-1 text-sm transition-all duration-200',
-            getPaddingClass(link.depth),
-            activeId === link.id
-              ? 'text-primary text-base font-medium'
-              : 'text-default-700 hover:text-primary'
+            getPaddingClass(link.depth)
           )
         "
       >
         {{ link.text }}
-      </a>
+      </div>
       <DocDetailTOCLink
         v-if="link.children && link.children.length > 0"
         :links="link.children"
-        :active-id="activeId"
-        @scroll-to="(id) => $emit('scroll-to', id)"
       />
     </div>
   </div>

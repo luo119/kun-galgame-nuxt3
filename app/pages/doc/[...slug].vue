@@ -31,8 +31,6 @@ useKunSeoMeta({
     v-if="data"
     class-name="backdrop-blur-none pb-6 min-h-[calc(100dvh-6rem)]"
   >
-    <DocDetailBackgroundImage :src="data.banner" />
-
     <div class="flex">
       <DocDetailCategoryTree />
 
@@ -48,9 +46,9 @@ useKunSeoMeta({
         <DocDetailFooter />
       </article>
 
-      <div class="hidden lg:block">
+      <div v-if="data.toc.length" class="hidden lg:block">
         <div class="fixed -translate-x-67">
-          <DocDetailTableOfContent :toc="null" />
+          <DocDetailTableOfContent :links="data.toc" />
         </div>
       </div>
     </div>

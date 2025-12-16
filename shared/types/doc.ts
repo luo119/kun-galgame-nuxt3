@@ -1,3 +1,10 @@
+export interface DocTocLink {
+  id: string
+  text: string
+  depth: number
+  children?: DocTocLink[]
+}
+
 export interface DocCategoryItem {
   id: number
   slug: string
@@ -67,6 +74,7 @@ export interface DocArticleSummary {
 export interface DocArticleDetail extends DocArticleSummary {
   contentMarkdown: string
   contentHtml: string
+  toc: DocTocLink[]
 }
 
 export interface DocArticleListResponse {
