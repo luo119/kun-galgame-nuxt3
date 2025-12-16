@@ -2,12 +2,12 @@
 const route = useRoute()
 
 const { data: categoryResponse } = await useFetch('/api/doc/category', {
-  query: { page: 1, limit: 200 },
+  query: { page: 1, limit: 100 },
   ...kungalgameResponseHandler
 })
 
 const { data: articleResponse } = await useFetch('/api/doc/article', {
-  query: { page: 1, limit: 200, orderBy: 'published_time', sortOrder: 'desc' },
+  query: { page: 1, limit: 100, orderBy: 'published_time', sortOrder: 'desc' },
   ...kungalgameResponseHandler
 })
 

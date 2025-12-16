@@ -66,6 +66,7 @@ export interface DocArticleSummary {
 
 export interface DocArticleDetail extends DocArticleSummary {
   contentMarkdown: string
+  contentHtml: string
 }
 
 export interface DocArticleListResponse {

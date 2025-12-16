@@ -80,9 +80,10 @@ export const mapDocArticleListItem = (
   tags: article.tags.map((tag) => tag.doc_tag)
 })
 
-export const mapDocArticleDetail = (
+export const mapDocArticleDetail = async (
   article: DocArticleDetailPayload
-): DocArticleDetail => ({
+): Promise<DocArticleDetail> => ({
   ...mapDocArticleListItem(article),
-  contentMarkdown: article.content_markdown
+  contentMarkdown: article.content_markdown,
+  contentHtml: await markdownToHtml(article.content_markdown)
 })

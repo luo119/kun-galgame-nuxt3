@@ -9,6 +9,7 @@ authorUid: 2
 authorName: 'KUN'
 authorAvatar: 'https://image.kungal.com/avatar/user_2/avatar.webp'
 authorHomepage: 'https://github.com/KUN1007'
+view: 19865
 pin: true
 ---
 

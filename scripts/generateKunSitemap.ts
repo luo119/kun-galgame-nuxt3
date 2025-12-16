@@ -2,9 +2,6 @@ import { writeFile } from 'fs/promises'
 import { glob } from 'tinyglobby'
 import prettier from 'prettier'
 import { getKunDynamicRoutes } from './dynamic-routes/getKunDynamicRoutes'
-import { getKunDynamicBlog } from './dynamic-routes/getKunDynamicBlog'
-import { kunCategoryAvailableItem } from '../app/constants/category'
-import { KUN_TOPIC_SECTION_DESCRIPTION_MAP } from '../app/constants/section'
 
 const WEBSITE_URL = process.env.KUN_GALGAME_URL
 
@@ -36,20 +33,7 @@ const generateKunSitemap = async () => {
       '!pages/galgame-rating/[id].vue'
     ])
 
-    const categoryRoutes = kunCategoryAvailableItem.map((category) => ({
-      path: `/category/${category.value}`,
-      lastmod: new Date().toISOString()
-    }))
-
-    const sectionRoutes = Object.keys(KUN_TOPIC_SECTION_DESCRIPTION_MAP).map(
-      (section) => ({
-        path: `/section/${section}`,
-        lastmod: new Date().toISOString()
-      })
-    )
-
     const dynamicPatches = await getKunDynamicRoutes()
-    const dynamicBlogs = getKunDynamicBlog()
 
     const sitemap = `
       <?xml version="1.0" encoding="UTF-8"?>
@@ -85,20 +69,6 @@ const generateKunSitemap = async () => {
             `
           )
           .join('')}
-          ${dynamicBlogs
-            .concat(categoryRoutes)
-            .concat(sectionRoutes)
-            .map(
-              (patch) => `
-                <url>
-                  <loc>${WEBSITE_URL}${patch.path}</loc>
-                  <lastmod>${patch.lastmod}</lastmod>
-                  <changefreq>weekly</changefreq>
-                  <priority>0.9</priority>
-                </url>
-              `
-            )
-            .join('')}
       </urlset>
     `
 

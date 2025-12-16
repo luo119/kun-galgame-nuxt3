@@ -4,7 +4,7 @@ const route = useRoute()
 const { data: articleResponse } = await useFetch('/api/doc/article', {
   query: {
     page: 1,
-    limit: 200,
+    limit: 100,
     orderBy: 'published_time',
     sortOrder: 'desc'
   }

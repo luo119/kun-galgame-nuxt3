@@ -89,6 +89,6 @@ export default defineEventHandler(async (event) => {
     return kunError(event, '更新文档失败，请稍后重试')
   }
 
-  const result: DocArticleDetail = mapDocArticleDetail(updatedArticle)
+  const result: DocArticleDetail = await mapDocArticleDetail(updatedArticle)
   return result
 })

@@ -5,13 +5,13 @@ import {
 } from '~~/server/utils/doc/article'
 
 export default defineEventHandler(async (event) => {
-  const articleId = kunParseRouteId(event)
-  if (!articleId) {
-    return kunError(event, '文档 ID 不正确')
+  const articleSlug = event.context.params?.slug
+  if (!articleSlug) {
+    return kunError(event, '文档 Slug 不正确')
   }
 
   const article = await prisma.doc_article.findUnique({
-    where: { id: articleId },
+    where: { slug: articleSlug },
     select: docArticleDetailSelect
   })
 
@@ -19,6 +19,6 @@ export default defineEventHandler(async (event) => {
     return kunError(event, '文档不存在')
   }
 
-  const result: DocArticleDetail = mapDocArticleDetail(article)
+  const result: DocArticleDetail = await mapDocArticleDetail(article)
   return result
 })

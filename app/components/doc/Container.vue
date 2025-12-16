@@ -58,7 +58,7 @@ const articles = computed(() => articleResponse.value?.articles || [])
         </div>
 
         <div class="group relative h-full space-y-3">
-          <KunImage
+          <img
             :alt="post.title"
             class="rounded-lg"
             :src="post.banner || '/kungalgame.webp'"
